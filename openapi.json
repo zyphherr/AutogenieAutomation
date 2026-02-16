@@ -1,0 +1,67 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AutoGenie Agent API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://oversocially-thready-adriene.ngrok-free.dev",
+      "description": "AutoGenie Tunnel"
+    }
+  ],
+  "paths": {
+    "/agent/action": {
+      "post": {
+        "operationId": "schedule_test_drive",
+        "summary": "Schedule a vehicle test drive",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "example": "schedule_test_drive"
+                  },
+                  "customerName": {
+                    "type": "string"
+                  },
+                  "vehicle": {
+                    "type": "string"
+                  }
+                },
+                "required": ["action", "customerName", "vehicle"]
+              }
+            }
+          }
+        },
+        "responses": {
+        "200": {
+            "description": "Test drive scheduled successfully",
+            "content": {
+            "application/json": {
+                "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                    "type": "string"
+                    },
+                    "confirmation_id": {
+                    "type": "string"
+                    },
+                    "message": {
+                    "type": "string"
+                    }
+                }
+              }
+            }
+          }
+         }
+        }
+      }
+    }
+  }
+}
